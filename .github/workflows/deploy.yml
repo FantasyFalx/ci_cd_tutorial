@@ -1,4 +1,4 @@
-# File that is for deployment from docker to google cloud
+# File for deployment from Docker to Google Cloud
 # With build
 name: Google Cloud Deploy
 
@@ -6,7 +6,6 @@ name: Google Cloud Deploy
 on:
   push:
     branches: [ main ]
-
 
 # Jobs tab:
 jobs:
@@ -16,31 +15,28 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-  
-  # Part for the google cloud image configuration, pulled from git secret keys
-  # This is going to be in whatever reporsitory you made
+
+    # Part for the Google Cloud image configuration, pulled from git secret keys
     - uses: google-github-actions/setup-gcloud@master
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-        project_id: ${{ env.PROJECT_ID }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}  # Use secrets for project ID too
         export_default_credentials: true
 
-  # Creating a docker image from current dir
+    # Creating a Docker image from current dir
     - name: Build Docker Image
-      run: docker build -t $IMAGE_NAME:latest .
+      run: docker build -t ${{ secrets.IMAGE_NAME }}:latest .
 
     - name: Configure Docker Client
       run: |-
         gcloud auth configure-docker --quiet
 
-  # Push the image to conatiner registry on google cloud
+    # Push the image to container registry on Google Cloud
     - name: Push Docker Image to Container Registry (GCR)
       env:
-      GIT_TAG: v0.1.0
+        GIT_TAG: v0.1.0
       run: |-
-        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-
-
+        docker tag ${{ secrets.IMAGE_NAME }}:latest gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:latest
+        docker tag ${{ secrets.IMAGE_NAME }}:latest gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:$GIT_TAG
+        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:latest
+        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:$GIT_TAG
