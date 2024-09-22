@@ -25,7 +25,7 @@ jobs:
 
      # Creating a docker image from current dir
     - name: Build Docker Image
-      run: docker build -t test-image:latest -/ci_cd_tutorial
+      run: docker build -t test-image:latest .
 
     - name: Configure Docker Client
       run: |-
