@@ -25,7 +25,7 @@ jobs:
 
      # Creating a docker image from current dir
     - name: Build Docker Image
-      run: docker build -t test-image:latest .
+      run: docker build -t test-image:latest -/ci_cd_tutorial
 
     - name: Configure Docker Client
       run: |-
@@ -36,7 +36,7 @@ jobs:
       env:
         GIT_TAG: v0.1.0
       run: |-
-        docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:latest
-        docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:$GIT_TAG
-        docker push gcr.io/$PROJECT_ID/test-image:latest
-        docker push gcr.io/$PROJECT_ID/test-image:$GIT_TAG
+        docker tag test-image:latest gcr.io/${{secrets.GCP_PROJECTS_ID}}/test-image:latest
+        docker tag test-image:latest gcr.io/${{secrets.GCP_PROJECTS_ID}}/test-image:$GIT_TAG
+        docker push gcr.io/${{secrets.GCP_PROJECT_ID}}/test-image:latest
+        docker push gcr.io/${{secrets.GCP_PROJECT_ID}}/test-image:$GIT_TAG
