@@ -23,9 +23,9 @@ jobs:
 
     # Authenticate to google cloud was never authenticated
     - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
     # Part for the Google Cloud image configuration, pulled from git secret keys
     - uses: google-github-actions/setup-gcloud@v1 # Update to v1
