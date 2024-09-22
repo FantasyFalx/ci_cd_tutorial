@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
 
     # Part for the Google Cloud image configuration, pulled from git secret keys
-    - uses: google-github-actions/setup-gcloud@master
+    - uses: google-github-actions/setup-gcloud@v1 # Update to v1
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: ${{ secrets.GCP_PROJECT_ID }}  # Use secrets for project ID too
