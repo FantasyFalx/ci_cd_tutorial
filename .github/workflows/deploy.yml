@@ -1,6 +1,6 @@
 # File that is for deployment from docker to google cloud
 # With build
-
+name: Google Cloud Deploy
 
 # Defines what branch the yaml file will activate on
 on:
