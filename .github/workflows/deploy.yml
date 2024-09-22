@@ -34,7 +34,7 @@ jobs:
   # Push the image to conatiner registry on google cloud
     - name: Push Docker Image to Container Registry (GCR)
       env:
-      GIT_TAG: v0.1.0
+        GIT_TAG: v0.1.0
       run: |-
         docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:latest
         docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:$GIT_TAG
