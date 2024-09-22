@@ -16,5 +16,5 @@ def client():
 def test_hello_world(client):
     resp = client.get("/")
     
-    assert b"Hello World" in resp.data
+    assert b"Hello World!" in resp.data
 
