@@ -23,20 +23,20 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}  # Use secrets for project ID too
         export_default_credentials: true
 
-    # Creating a Docker image from current dir
+     # Creating a docker image from current dir
     - name: Build Docker Image
-      run: docker build -t ${{ secrets.IMAGE_NAME }}:latest .
+      run: docker build -t test-image:latest .
 
     - name: Configure Docker Client
       run: |-
         gcloud auth configure-docker --quiet
 
-    # Push the image to container registry on Google Cloud
+  # Push the image to conatiner registry on google cloud
     - name: Push Docker Image to Container Registry (GCR)
       env:
-        GIT_TAG: v0.1.0
+      GIT_TAG: v0.1.0
       run: |-
-        docker tag ${{ secrets.IMAGE_NAME }}:latest gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:latest
-        docker tag ${{ secrets.IMAGE_NAME }}:latest gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:$GIT_TAG
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:latest
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/{{ secrets.IMAGE_NAME }}:$GIT_TAG
+        docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:latest
+        docker tag test-image:latest gcr.io/$PROJECT_ID/test-image:$GIT_TAG
+        docker push gcr.io/$PROJECT_ID/test-image:latest
+        docker push gcr.io/$PROJECT_ID/test-image:$GIT_TAG
