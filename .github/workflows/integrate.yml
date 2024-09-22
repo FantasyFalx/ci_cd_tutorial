@@ -2,15 +2,15 @@ name: Flask Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   route_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       - name: Set up Python 
-      # Version of the action for setting up python, no Python
+      # Version of the action for setting up python, not Python Version
           uses: actions/setup-python@v5
           with:
             # Semantic version range syntax or exact version of a python version
