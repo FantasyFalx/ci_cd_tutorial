@@ -2,8 +2,8 @@ name: Build and Deploy to Cloud Run
 
 on:
   push:
-    branches:
-      - branch: [ main ]
+    branches: [ main ]
+      
 
 env:
   PROJECT_ID: cicd-test-436421 # TODO: update Google Cloud project id
