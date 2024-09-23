@@ -26,7 +26,7 @@ jobs:
 
       
 
-      # NOTE: Alternative option - authentication via credentials json
+      # NOTE: Alternative option - authentication via credentials json hoepfully
       - name: Google Auth
         id: auth
         uses: 'google-github-actions/auth@v0'
