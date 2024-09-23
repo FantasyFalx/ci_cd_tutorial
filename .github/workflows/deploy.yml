@@ -15,10 +15,10 @@ jobs:
     env:
       PROJECT_ID: cicd-test-436421
       IMAGE_NAME: test-image
-      GAR_LOCATION: us-east1
-      REPOSITORY: test-repo
+      GAR_LOCATION: us-east4
+      REPOSITORY: cicd-testrepo
       SERVICE: cicd-test
-      REGION: us-east1
+      REGION: us-east4
     
     steps:
     - name: Checkout
