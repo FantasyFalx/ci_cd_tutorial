@@ -10,8 +10,12 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 # Copy all of it
 COPY . .
+
+# Expose port 8080
+EXPOSE 8080
+
 # Then the command
-CMD [ "flask", "run", "--host=0.0.0.0", "--port=5000", "--debugger", "--reload" ]
+CMD ["python3", "app.py"]
 
 
 # Hello what is going on right now?
