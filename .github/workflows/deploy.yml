@@ -2,14 +2,6 @@
 # With build
 name: Google Cloud Deploy
 
-# Env vars
-env:
-  PROJECT_ID: cicd-test-436421
-  IMAGE_NAME: test-image
-  GAR_LOCATION: us-east1
-  REPOSITORY: test-repo
-  SERVICE: cicd-test
-  REGION: us-east1
 
 # Defines what branch the yaml file will activate on
 on:
@@ -20,6 +12,13 @@ jobs:
   build-push-gcr:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
+    env:
+      PROJECT_ID: cicd-test-436421
+      IMAGE_NAME: test-image
+      GAR_LOCATION: us-east1
+      REPOSITORY: test-repo
+      SERVICE: cicd-test
+      REGION: us-east1
     
     steps:
     - name: Checkout
