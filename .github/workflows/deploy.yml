@@ -2,6 +2,15 @@
 # With build
 name: Google Cloud Deploy
 
+# Env vars
+env:
+  PROJECT_ID: cicd-test-436421
+  IMAGE_NAME: test-image
+  GAR_LOCATION: us-east1
+  REPOSITORY: test-repo
+  SERVICE: cicd-test
+  REGION: us-east1
+
 # Defines what branch the yaml file will activate on
 on:
   push:
@@ -11,14 +20,7 @@ jobs:
   build-push-gcr:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
-    env:
-      PROJECT_ID: cicd-test-436421
-      IMAGE_NAME: test-image
-      GAR_LOCATION: us-east1
-      REPOSITORY: test-repo
-      SERVICE: cicd-test
-      REGION: us-east1
-
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -59,10 +61,10 @@ jobs:
 
   # Push the image to the cloud run for it to be posted to the web
 
-   - name: Deploy to Cloud Run
-        id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
-        with:
+    - name: Deploy to Cloud Run
+      id: deploy
+      uses: google-github-actions/deploy-cloudrun@v0
+      with:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           # NOTE: If using a pre-built image, update the image name here
