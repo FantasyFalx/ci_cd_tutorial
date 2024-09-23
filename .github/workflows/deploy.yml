@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: cicd-test-436421 # TODO: update Google Cloud project id
   GAR_LOCATION: us-east1 # TODO: update Artifact Registry location
-  REPOSITORY: cicd-testrepo # TODO: update Artifact Registry repository name
+  REPOSITORY: test-repo # TODO: update Artifact Registry repository name
   SERVICE: test-flask-app # TODO: update Cloud Run service name
   REGION: us-east1 # TODO: update Cloud Run service region
 
