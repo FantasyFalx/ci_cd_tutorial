@@ -62,9 +62,9 @@ jobs:
           gcloud auth configure-docker "${{ env.GAR_LOCATION }}-docker.pkg.dev"
       
       - name: Git Tag Call
-        
+        run: |-
+          VERSION_TAG=`git describe --abbreve=0`
         # Gets the most recent annotated tag
-      - script: VERSION_TAG=`git describe --abbreve=0`
         displayName: Set the tag name as an env variable
 
       # Build and Push Container 
