@@ -3,7 +3,9 @@ name: Build and Deploy to Cloud Run
 on:
   push:
     branches: [ main ]
-      
+
+# Environment var
+
 env:
   PROJECT_ID: cicd-test-436421 # TODO: update Google Cloud project id
   GAR_LOCATION: us-east4 # TODO: update Artifact Registry location
@@ -12,7 +14,7 @@ env:
   REGION: us-east1 # TODO: update Cloud Run service region
 
 jobs:
-  deploy:
+  test-build-deploy:
     # Add 'id-token' with the intended permissions for workload identity federation
     permissions:
       contents: 'read'
@@ -41,6 +43,7 @@ jobs:
           pip install pytest pytest-cov
           pytest tests
 
+    # Adding a new comment for test purposes
     # Adding a new comment for test purposes
 
       # Google Authentication
