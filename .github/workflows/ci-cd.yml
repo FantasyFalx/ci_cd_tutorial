@@ -65,7 +65,6 @@ jobs:
         run: |-
           VERSION_TAG=`git describe --abbreve=0`
         # Gets the most recent annotated tag
-        displayName: Set the tag name as an env variable
 
       # Build and Push Container 
       - name: Build and Push Container 
