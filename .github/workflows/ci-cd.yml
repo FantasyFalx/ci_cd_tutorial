@@ -83,10 +83,10 @@ jobs:
 
             docker build -t "$IMAGE_NAME:${{ github.sha }}" ./
 
-            docker tag "$IMAGE_NAME:${{ github.sha }}" "$IMAGE_NAME:${{ github.sha }}:${{ env.GIT_TAG }}"
+            docker tag "$IMAGE_NAME:${{ github.sha }}" "$IMAGE_NAME:${{ env.GIT_TAG }}"
 
             docker push "$IMAGE_NAME:${{ github.sha }}"
-            docker push "$IMAGE_NAME:${{ github.sha }}:${{ env.GIT_TAG }}"
+            docker push "$IMAGE_NAME:${{ env.GIT_TAG }}"
 
       # END - Docker auth and build
 
