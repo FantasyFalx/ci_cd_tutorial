@@ -63,7 +63,7 @@ jobs:
       
       - name: Git Tag Call
         run: |-
-          VERSION_TAG=`git describe --abbreve=0`
+          VERSION_TAG=`git describe --abbrev=0`
         # Gets the most recent annotated tag
 
       # Build and Push Container 
